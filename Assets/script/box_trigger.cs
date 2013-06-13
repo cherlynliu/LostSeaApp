@@ -2,17 +2,18 @@ using UnityEngine;
 using System.Collections;
 
 public class box_trigger : MonoBehaviour {
+    int material_Kind = 4;  //物資種類數量
     //GameObject box
     bool OnTriggerEnter(Collider col)
     {
-        boxController.objectsInBox[0] = Random.Range(0, 4);
+        boxController.objectsInBox[0] = Random.Range(0, material_Kind); //隨機產生一種物資
         Destroy(this.gameObject, 0.25f);
-        //Instantiate((object)GameObject.Find("box"), new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30)));
+        
         return false;
     }
 	// Use this for initialization
 	void Start () {
-        //Debug.Log(this.name);
+        
 	}
 	
 	// Update is called once per frame

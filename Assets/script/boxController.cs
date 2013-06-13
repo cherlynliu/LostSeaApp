@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class boxController : MonoBehaviour {
-    public static int[] objectsInBox = new int[3]{-1,-1,-1};
-    public static int[] objectsInBag = new int[3];
+    public static int[] objectsInBox = new int[3]{-1,-1,-1};    //紀錄增加各種物資的開關，-1等同於狀態歸零
+    public static int[] objectsInBag = new int[3];  //紀錄包包裡擁有的物資
+    public static bool isShowBox = false;   //是否顯示包包內容物
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,11 @@ public class boxController : MonoBehaviour {
             if (objectsInBox[0] == 2) { print("got bottle with message*1"); objectsInBag[2] += 1; }
             if (objectsInBox[0] == 3) { print("got nothing"); }
             objectsInBox[0] = -1;
+        }
+        if (isShowBox) GameObject.Find("Camera_BOX").SetActive(true);   //開啟包包
+        else
+        {
+            if (GameObject.Find("Camera_BOX") != null) GameObject.Find("Camera_BOX").SetActive(false);
         }
 	}
 }
