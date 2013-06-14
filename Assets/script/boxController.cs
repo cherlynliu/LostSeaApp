@@ -22,10 +22,11 @@ public class boxController : MonoBehaviour {
             if (objectsInBox[0] == 3) { print("got nothing"); }
             objectsInBox[0] = -1;
         }
-        if (isShowBox) GameObject.Find("Camera_BOX").SetActive(true);   //開啟包包
+        if (isShowBox) GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = true;   //開啟包包
         else
         {
-            if (GameObject.Find("Camera_BOX") != null) GameObject.Find("Camera_BOX").SetActive(false);
+            if (GameObject.Find("Camera_BOX").GetComponent<Camera>() != null)
+                GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = false;
         }
 	}
 }
