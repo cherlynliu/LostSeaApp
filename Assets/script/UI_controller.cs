@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class UI_controller : MonoBehaviour {
-    public static int iBarG_width = 300, iBarR_width = 300, iDayPast = 0;   //體力、健康、天數的數值
+    public static int iBarG_width = 300, iBarR_width = 300, iDayPast = 0;   //健康、體力、天數的數值
     public static float mileage = 0.0f, strengthDecay = 0.0f;   //里程數、體力耗損計算-->從player_controller裡面累加(移動時)
 
 	// Use this for initialization
