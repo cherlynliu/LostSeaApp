@@ -13,7 +13,6 @@ public class boxController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //objectsInBag[0].transform = new Transform();
         if (objectsInBox[0] >= 0)
         {
             if (objectsInBox[0] == 0) { print("got food*1"); objectsInBag[0] += 1; }
@@ -23,10 +22,6 @@ public class boxController : MonoBehaviour {
             objectsInBox[0] = -1;
         }
         if (isShowBox) GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = true;   //¶}±Ò¥]¥]
-        else
-        {
-            if (GameObject.Find("Camera_BOX").GetComponent<Camera>() != null)
-                GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = false;
-        }
+        else GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = false;
 	}
 }

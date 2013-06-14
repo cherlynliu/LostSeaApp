@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\script\UI_controller.cs" />
      <Compile Include="Assets\script\boxController.cs" />
      <Compile Include="Assets\script\box_trigger.cs" />
      <Compile Include="Assets\script\btnController.cs" />
