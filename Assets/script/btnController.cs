@@ -19,7 +19,6 @@ public class btnController : MonoBehaviour {
         GUI.skin = skin;
         if (GUI.Button(btn_rect, "物資包包"))    //包包按鈕按下為true
         {
-            //print("box :  you have food*" + boxController.objectsInBag[0] + ", bottle*" + boxController.objectsInBag[1] + ", bottle with message*" + boxController.objectsInBag[2]);
             boxController.isShowBox = !boxController.isShowBox; //切換顯示包包內容物的開關
         }
     }

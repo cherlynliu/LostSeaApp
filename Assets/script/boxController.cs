@@ -2,12 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class boxController : MonoBehaviour {
-    public static int[] objectsInBox = new int[3]{-1,-1,-1};    //紀錄增加各種物資的開關，-1等同於狀態歸零
-    public static int[] objectsInBag = new int[3];  //紀錄包包裡擁有的物資
+    public static int objectsInBox;    //紀錄增加各種物資的開關，-1等同於狀態歸零
     public static int[] m_objectsInBag = new int[9];  //紀錄包包裡擁有的物資_貼圖用
     public static bool isShowBox = false;   //是否顯示包包內容物
     public Material[] mat_things;    //包包內容物的材質
-    //0:空, 1:食物, 2:瓶子, 3:瓶中信, 4:箱子
+    //0:預設箱子 1:罐頭 2:魚 3:水 4:瓶中信 5:小島
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +15,14 @@ public class boxController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (objectsInBox[0] >= 0)
+        if (objectsInBox > 0)
         {
-            if (objectsInBox[0] == 0) { print("got nothing"); }
-            if (objectsInBox[0] == 1) { print("got food*1"); objectsInBag[0] += 1; fillBagCheck(1); }   //1:食物
-            if (objectsInBox[0] == 2) { print("got bottle*1"); objectsInBag[1] += 1; fillBagCheck(2); } //2:瓶子
-            if (objectsInBox[0] == 3) { print("got bottle with message*1"); objectsInBag[2] += 1; fillBagCheck(3); }    //3:瓶中信
-            objectsInBox[0] = -1;
+            if (objectsInBox == 1) { print("got a food can");fillBagCheck(1); }   //1:食物(罐頭)
+            if (objectsInBox == 2) { print("got a fish"); fillBagCheck(2); } //2:魚
+            if (objectsInBox == 3) { print("got a bottle of water"); fillBagCheck(3); }    //3:水
+            if (objectsInBox == 4) { print("got bottle with message"); fillBagCheck(4); }    //4:瓶中信
+            //if (objectsInBox == 5) { print("bump into a island"); fillBagCheck(5); }    //5:小島
+            objectsInBox = -1;
         }
         if (isShowBox) GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = true;   //開啟包包
         else GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = false;
@@ -43,7 +43,20 @@ public class boxController : MonoBehaviour {
 
     void useThingsInBag(int value)
     {
-        if (m_objectsInBag[value] == 1) UI_controller.strengthDecay -= 50;  //增加體力50
+        if (m_objectsInBag[value] == 1)
+        {
+            UI_controller.strengthDecay -= 100;  //使用糧食罐頭，增加體力100
+        }
+        if (m_objectsInBag[value] == 2)
+        {
+            UI_controller.strengthDecay -= 50;  //使用魚，增加體力50，健康-10
+            UI_controller.healthDecay += 10;
+        }
+        if (m_objectsInBag[value] == 3)
+        {
+            UI_controller.strengthDecay -= 25;  //使用水，增加體力25，健康+10
+            UI_controller.healthDecay -= 10;
+        }
         m_objectsInBag[value] = 0;
     }
     //檢查包包有無空間，並記錄下來，多的不理(撿不起來)
