@@ -49,7 +49,7 @@ public class boxChanger : MonoBehaviour {
     //依物資編號顯示物件
     void boxChange()
     {
-        print(thingNumber);
+        //print(thingNumber);
         for (int i = 0; i < material_Kind; i++)
         {
             thingsInBox[i].SetActive(false);
