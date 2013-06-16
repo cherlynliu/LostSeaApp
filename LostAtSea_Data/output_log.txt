@@ -1,0 +1,19 @@
+Initialize engine version: 4.0.0f7
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.1106]
+    Renderer: NVIDIA GeForce 9600 GT
+    Vendor:   NVIDIA
+    VRAM:     1390 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\public.public-PC\Documents\GitHub\LostSeaApp\LostSeaApp\LostAtSea_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.635 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1680x1050 59Hz; virtual: 2960x1050 at -1280,0
