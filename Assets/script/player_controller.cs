@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class player_controller : MonoBehaviour {
-    public Transform BoatAndPlayer;
+    public Transform BoatAndPlayer, pedal_L, pedal_R;
     public float shakeValue = 0f;
+    int rotateSignLx = 3, rotateSignRx = 3, rotateSignLy = 3, rotateSignRy = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -26,31 +27,46 @@ public class player_controller : MonoBehaviour {
         //羅盤介面的旋轉
         GameObject.Find("Plane_compass").transform.position = new Vector3(BoatAndPlayer.transform.position.x, 20, BoatAndPlayer.transform.position.z);
         Shaking();
+        RotatePedalSetting();        
 	}
     //偵測移動(鍵盤WASD)
     private void moveDetect() {
         if (Input.GetKey(KeyCode.S))
         {
             BoatAndPlayer.transform.Translate(0, 0, -5f * Time.deltaTime);
+            pedal_L.transform.Rotate(new Vector3(1, 0, 0), rotateSignLx * 30f * Time.deltaTime, Space.Self);
+            pedal_R.transform.Rotate(new Vector3(1, 0, 0), rotateSignRx * 30f * Time.deltaTime, Space.Self);
             UI_controller.mileage += 5f * Time.deltaTime;
             UI_controller.strengthDecay += 10f * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
             BoatAndPlayer.transform.Translate(0, 0, 7.5f * Time.deltaTime);
+            pedal_L.transform.Rotate(new Vector3(1, 0, 0), rotateSignLx * 30f * Time.deltaTime, Space.Self);
+            pedal_R.transform.Rotate(new Vector3(1, 0, 0), rotateSignRx * 30f * Time.deltaTime, Space.Self);
             UI_controller.mileage += 7.5f * Time.deltaTime;
             UI_controller.strengthDecay += 10f * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
             BoatAndPlayer.transform.Rotate(0, -30 * Time.deltaTime, 0);
+            pedal_R.transform.Rotate(new Vector3(1, 0, 0), rotateSignRx * 30f * Time.deltaTime, Space.Self);
             UI_controller.strengthDecay += 2.5f * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
             BoatAndPlayer.transform.Rotate(0, 30 * Time.deltaTime, 0);
+            pedal_L.transform.Rotate(new Vector3(1, 0, 0), rotateSignLx * 30f * Time.deltaTime, Space.Self);
             UI_controller.strengthDecay += 2.5f * Time.deltaTime;
         }
+    }
+
+    void RotatePedalSetting()   //有問題，無法正常使槳照合理狀況旋轉
+    {
+        if (pedal_L.transform.rotation.x > 45) rotateSignLx *= -1;
+        if (!(pedal_L.transform.rotation.x > 360-45)) rotateSignLx *= 1;
+        if (pedal_R.transform.rotation.x > 45) rotateSignRx *= -1;
+        if (!(pedal_R.transform.rotation.x > 360 - 45)) rotateSignRx *= 1;
     }
 
     private void UpdatePlayer()//enTouchType T)

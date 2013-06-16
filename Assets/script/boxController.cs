@@ -17,11 +17,19 @@ public class boxController : MonoBehaviour {
 	void Update () {
         if (objectsInBox > 0)
         {
-            if (objectsInBox == 1) { print("got a food can");fillBagCheck(1); }   //1:食物(罐頭)
-            if (objectsInBox == 2) { print("got a fish"); fillBagCheck(2); } //2:魚
-            if (objectsInBox == 3) { print("got a bottle of water"); fillBagCheck(3); }    //3:水
-            if (objectsInBox == 4) { print("got bottle with message"); fillBagCheck(4); }    //4:瓶中信
-            //if (objectsInBox == 5) { print("bump into a island"); fillBagCheck(5); }    //5:小島
+            if (objectsInBox == 1) { btnController.str = "You got a food can.";fillBagCheck(1); }   //1:食物(罐頭)
+            if (objectsInBox == 2) { btnController.str = "You got a fish."; fillBagCheck(2); } //2:魚
+            if (objectsInBox == 3) { btnController.str = "You got a bottle of water."; fillBagCheck(3); }    //3:水
+            if (objectsInBox == 4) { btnController.str = "You got bottle with message."; fillBagCheck(4); }    //4:瓶中信
+            if (objectsInBox == 5)  //5:小島
+            {
+                int r = Random.Range(0, 5);
+                    if (r == 0) btnController.str = "You meet Cannibal, RUNNNNNNNNNNNNNNNNNN\nNNNNNN!!!!!!!!!!!!!!!";
+                    if (r == 1) btnController.str = "\"YOU! GOT! WRONG! WAY!\"  (health-50)";
+                    if (r == 2) btnController.str = "Here's nothing!";
+                    if (r == 3) btnController.str = "\"YOU NEED TO ESCAPE FROM HERE NOW!\"";
+                    if (r == 4) btnController.str = "\"CONGRADUATIONS!!\" you find the path to get out.\n<press space to contionue...>\n(Just Kidding! we did not set this.)";
+            } 
             objectsInBox = -1;
         }
         if (isShowBox) GameObject.Find("Camera_BOX").gameObject.GetComponent<Camera>().enabled = true;   //開啟包包
@@ -46,16 +54,28 @@ public class boxController : MonoBehaviour {
         if (m_objectsInBag[value] == 1)
         {
             UI_controller.strengthDecay -= 100;  //使用糧食罐頭，增加體力100
+            btnController.str = "You uesd a can food. (strength+100)";
         }
         if (m_objectsInBag[value] == 2)
         {
             UI_controller.strengthDecay -= 50;  //使用魚，增加體力50，健康-10
             UI_controller.healthDecay += 10;
+            btnController.str = "You uesd a fresh fish. (strength+50 ,health-10)";
         }
         if (m_objectsInBag[value] == 3)
         {
             UI_controller.strengthDecay -= 25;  //使用水，增加體力25，健康+10
             UI_controller.healthDecay -= 10;
+            btnController.str = "You uesd a bottle of water. (strength+25 ,health+10)";
+        }
+        if (m_objectsInBag[value] == 4)
+        {
+            int r = Random.Range(0, 5);
+                if (r == 0) btnController.str = "You open the message... \nit says: \"HELP ME!\" ";
+                if (r == 1) btnController.str = "You open the message... \n it says: \"Today is a raining day, and I find out my boat\nis broken, Ithink I will die here...\" ";
+                if (r == 2) btnController.str = "You open the message... \nit says: \"DO YOU HAVE SOME FOOD?\" ";
+                if (r == 3) btnController.str = "You open the message... \nit says: \"I'm tired of the this shit place.\" ";
+                if (r == 4) btnController.str = "You open the message... \nbut nothing inside.";
         }
         m_objectsInBag[value] = 0;
     }

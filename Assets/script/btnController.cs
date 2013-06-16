@@ -3,8 +3,8 @@ using System.Collections;
 
 public class btnController : MonoBehaviour {
     public GUISkin skin;
-    Rect btn_rect = new Rect(0, 0, 100, 100);
-
+    Rect btn_rect = new Rect(0, 0, 100, 100), text_rect = new Rect(50, 800, 700, 100);
+    public static string str = " ";
 	// Use this for initialization
 	void Start () {
 	
@@ -21,5 +21,6 @@ public class btnController : MonoBehaviour {
         {
             boxController.isShowBox = !boxController.isShowBox; //切換顯示包包內容物的開關
         }
+        str = GUI.TextField(text_rect, str);
     }
 }
