@@ -59,6 +59,7 @@ public class player_controller : MonoBehaviour {
             pedal_L.transform.Rotate(new Vector3(1, 0, 0), rotateSignLx * 30f * Time.deltaTime, Space.Self);
             UI_controller.strengthDecay += 2.5f * Time.deltaTime;
         }
+        UI_controller.strengthDecay -= 0.5f * Time.deltaTime;
     }
 
     void RotatePedalSetting()   //有問題，無法正常使槳照合理狀況旋轉

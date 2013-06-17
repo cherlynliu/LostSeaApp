@@ -20,7 +20,7 @@ public class boxController : MonoBehaviour {
             if (objectsInBox == 1) { btnController.str = "You got a food can.";fillBagCheck(1); }   //1:食物(罐頭)
             if (objectsInBox == 2) { btnController.str = "You got a fish."; fillBagCheck(2); } //2:魚
             if (objectsInBox == 3) { btnController.str = "You got a bottle of water."; fillBagCheck(3); }    //3:水
-            if (objectsInBox == 4) { btnController.str = "You got bottle with message."; fillBagCheck(4); }    //4:瓶中信
+            if (objectsInBox == 4) { btnController.str = "You got a bottle with message."; fillBagCheck(4); }    //4:瓶中信
             if (objectsInBox == 5)  //5:小島
             {
                 int r = Random.Range(0, 5);
